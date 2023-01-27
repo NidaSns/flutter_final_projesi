@@ -3,8 +3,7 @@ import 'package:yemek_siparis_app/ui/cubit/sepet_cubit.dart';
 import '../../data/entity/yemekler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../constants/constants.dart';
-import '../widgets/dropdown_button.dart';
-import '../widgets/round_rectangle_border.dart';
+import '../widgets/yemek_detay/dropdown_button.dart';
 
 // ignore: must_be_immutable
 class YemekDetaySayfa extends StatefulWidget {
@@ -56,8 +55,7 @@ class _YemekDetaySayfaState extends State<YemekDetaySayfa> {
                 width: width * 0.75,
                 child: Card(
                   borderOnForeground: true,
-                  shape: RoundRectangleBorderTasarimi()
-                      .roundedRectangleBorder(context),
+                  elevation: 50,
                   color: Colors.white,
                   child: Column(
                     children: [
