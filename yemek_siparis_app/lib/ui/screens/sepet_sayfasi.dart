@@ -5,6 +5,7 @@ import 'package:yemek_siparis_app/ui/screens/toplam_fiyat.dart';
 import '../../constants/constants.dart';
 import '../../widgets/sepet/add_minus_icons.dart';
 import '../../widgets/sepet/list_tile.dart';
+import '../../widgets/sepet/total_prices_confirm_basket.dart';
 import '../cubit/sepet_cubit.dart';
 
 class SepetSayfasi extends StatefulWidget {
@@ -18,6 +19,7 @@ class SepetSayfasi extends StatefulWidget {
 
 class _SepetSayfasiState extends State<SepetSayfasi> {
   String toplamFiyat = "";
+  late AssetImage image;
 
   @override
   void initState() {
@@ -26,7 +28,14 @@ class _SepetSayfasiState extends State<SepetSayfasi> {
         .sepettekiYemekleriGetir(widget.kullaniciAdi)
         .whenComplete(
             () => ApplicationConstants.instance!.sepetData = "Sepet Boş");
+    image = const AssetImage("assets/gif/delivery.gif");
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    image.evict();
+    super.dispose();
   }
 
   @override
@@ -34,15 +43,59 @@ class _SepetSayfasiState extends State<SepetSayfasi> {
     context.read<SepetCubit>().sepettekiYemekleriGetir(widget.kullaniciAdi);
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    return Align(
-      alignment: Alignment.topLeft,
-      child: Padding(
-        padding: const EdgeInsets.only(top: 10),
-        child: Column(
-          children: [
-            Flexible(
-              fit: FlexFit.loose,
-              child: BlocBuilder<SepetCubit, List<Sepettekiler>>(
+    return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 0,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(10),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                child: Column(
+                  children: [
+                    PreferredSize(
+                      preferredSize: const Size.fromHeight(4),
+                      child: Container(
+                        color: Colors.red,
+                        height: 4,
+                        child: const LinearProgressIndicator(
+                          color: Colors.red,
+                          value: 0.7,
+                        ),
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: width / 3,
+                          height: height / 5,
+                          child: Image(
+                            image: image,
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 150,
+                          child: Text.rich(
+                            TextSpan(
+                              text: "Tahmini Teslimat",
+                              children: [
+                                TextSpan(
+                                    text: " Hemen (30 DK)",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold))
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              BlocBuilder<SepetCubit, List<Sepettekiler>>(
                 builder: (context, sepettekilerListesi) {
                   if (sepettekilerListesi.isNotEmpty) {
                     toplamFiyat = ToplamFiyat(sepet: sepettekilerListesi)
@@ -57,60 +110,33 @@ class _SepetSayfasiState extends State<SepetSayfasi> {
                               itemBuilder: (context, index) {
                                 var sepet = sepettekilerListesi[index];
                                 String dropdownValue = sepet.sepet_siparis_adet;
-                                return Padding(
-                                  padding: const EdgeInsets.all(15),
-                                  child: Card(
-                                    child: Row(
-                                      children: [
-                                        Flexible(
-                                          flex: 1,
-                                          child: Image.network(
-                                              "http://kasimadalan.pe.hu/yemekler/resimler/${sepet.sepet_yemek_resim_adi}"),
+                                return Card(
+                                  child: Row(
+                                    children: [
+                                      Flexible(
+                                        flex: 1,
+                                        child: Image.network(
+                                            "http://kasimadalan.pe.hu/yemekler/resimler/${sepet.sepet_yemek_resim_adi}"),
+                                      ),
+                                      Flexible(
+                                        flex: 1,
+                                        child: Column(
+                                          children: [
+                                            ListTileBasket(sepet: sepet),
+                                            AddMinusIcons(
+                                              dropdownValue: dropdownValue,
+                                              sepet: sepet,
+                                            ),
+                                          ],
                                         ),
-                                        Flexible(
-                                          flex: 1,
-                                          child: Column(
-                                            children: [
-                                              ListTileBasket(sepet: sepet),
-                                              AddMinusIcons(
-                                                dropdownValue: dropdownValue,
-                                                sepet: sepet,
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 );
                               }),
                         ),
-                        Align(
-                          alignment: Alignment.bottomRight,
-                          child: Column(
-                            children: [
-                              Text(
-                                "Toplam Fiyat: $toplamFiyat ₺",
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              SizedBox(
-                                width: width / 2,
-                                child: ElevatedButton.icon(
-                                  icon: const Icon(Icons.check_circle_rounded),
-                                  onPressed: () {},
-                                  label: const Text("Sepeti Onayla"),
-                                  style: ElevatedButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(32.0),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                        TotalPricesConfirmBasket(
+                            width: width, toplamFiyat: toplamFiyat),
                       ],
                     );
                   } else {
@@ -122,8 +148,8 @@ class _SepetSayfasiState extends State<SepetSayfasi> {
                   }
                 },
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
