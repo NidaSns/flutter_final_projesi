@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:yemek_siparis_app/data/entity/sepettekiler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:yemek_siparis_app/ui/constants/constants.dart';
 import 'package:yemek_siparis_app/ui/screens/toplam_fiyat.dart';
+import '../../constants/constants.dart';
+import '../../widgets/sepet/add_minus_icons.dart';
+import '../../widgets/sepet/list_tile.dart';
 import '../cubit/sepet_cubit.dart';
-import '../widgets/sepet/add_minus_icons.dart';
-import '../widgets/sepet/list_tile.dart';
 
 class SepetSayfasi extends StatefulWidget {
   final String kullaniciAdi;

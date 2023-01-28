@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:yemek_siparis_app/ui/constants/constants.dart';
-import 'package:yemek_siparis_app/ui/screens/yemek_kategori.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../screens/yemek_kategori.dart';
+import '../../constants/constants.dart';
 import '../cubit/anasayfa_cubit.dart';
 
 class YemeklerSayfasi extends StatefulWidget {

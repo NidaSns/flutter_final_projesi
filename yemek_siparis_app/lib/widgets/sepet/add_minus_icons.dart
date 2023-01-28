@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../data/entity/sepettekiler.dart';
-import '../../cubit/sepet_cubit.dart';
+import '../../ui/cubit/sepet_cubit.dart';
 
 class AddMinusIcons extends StatelessWidget {
   final String dropdownValue;

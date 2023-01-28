@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yemek_siparis_app/ui/screens/yemek_kategori.dart';
 import 'package:yemek_siparis_app/ui/screens/yemekler_sayfasi.dart';
-import '../constants/constants.dart';
+import '../../constants/constants.dart';
 import 'sepet_sayfasi.dart';
 
 class Anasayfa extends StatefulWidget {

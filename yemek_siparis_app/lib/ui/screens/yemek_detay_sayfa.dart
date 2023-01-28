@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:yemek_siparis_app/ui/cubit/sepet_cubit.dart';
+import '../../constants/constants.dart';
 import '../../data/entity/yemekler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../constants/constants.dart';
-import '../widgets/yemek_detay/dropdown_button.dart';
+import '../../widgets/dropdown_button.dart';
 
 // ignore: must_be_immutable
 class YemekDetaySayfa extends StatefulWidget {
