@@ -14,21 +14,25 @@ class TotalPricesConfirmBasket extends StatelessWidget {
       alignment: Alignment.bottomRight,
       child: Column(
         children: [
-          Text(
-            "Toplam Fiyat: $toplamFiyat ₺",
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
+          Align(
+            alignment: Alignment.centerRight,
+            child: Text(
+              "Toplam: $toplamFiyat₺",
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
             ),
           ),
           SizedBox(
-            width: width / 2,
+            width: width,
             child: ElevatedButton.icon(
               icon: const Icon(Icons.check_circle_rounded),
               onPressed: () {},
               label: const Text("Sepeti Onayla"),
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(32.0),
+                  borderRadius: BorderRadius.circular(10.0),
                 ),
               ),
             ),
