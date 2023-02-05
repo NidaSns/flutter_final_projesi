@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "784923611612",
+    "firebase_url": "https://beaming-sunset-338412-default-rtdb.firebaseio.com",
+    "project_id": "beaming-sunset-338412",
+    "storage_bucket": "beaming-sunset-338412.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:784923611612:android:032b3017d90471c21cff19",
+        "android_client_info": {
+          "package_name": "com.example.section14"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "784923611612-levmrq2kqnqqg3vtfdj3c3i5narqi6j8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7H6-YjCSH4hpRwAwCjBS14O3GP5w0vA8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "784923611612-levmrq2kqnqqg3vtfdj3c3i5narqi6j8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:784923611612:android:4684f888816cf0171cff19",
+        "android_client_info": {
+          "package_name": "com.example.takvim_projesi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "784923611612-levmrq2kqnqqg3vtfdj3c3i5narqi6j8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7H6-YjCSH4hpRwAwCjBS14O3GP5w0vA8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "784923611612-levmrq2kqnqqg3vtfdj3c3i5narqi6j8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:784923611612:android:a6f31fee6cec107a1cff19",
+        "android_client_info": {
+          "package_name": "com.example.yemek_siparis_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "784923611612-levmrq2kqnqqg3vtfdj3c3i5narqi6j8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7H6-YjCSH4hpRwAwCjBS14O3GP5w0vA8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "784923611612-levmrq2kqnqqg3vtfdj3c3i5narqi6j8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
