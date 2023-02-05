@@ -15,6 +15,8 @@ class AuthCubit extends Cubit<void> {
     return token != null ? true : false;
   }
 
+  bool registerSuccess = false;
+
   String? get token {
     if (_expiryDate != null &&
         _expiryDate!.isAfter(DateTime.now()) &&
@@ -37,6 +39,7 @@ class AuthCubit extends Cubit<void> {
       final response = await http.post(url, body: jsonEncode(veri));
       final responseData = jsonDecode(response.body);
       if (response.statusCode == 201 || response.statusCode == 200) {
+        registerSuccess = true;
         _token = responseData['idToken'];
         _userId = responseData['localId'];
         _expiryDate = DateTime.now().add(
