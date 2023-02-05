@@ -155,7 +155,20 @@ class _AuthCardState extends State<AuthCard> {
         // Sign user up
         context
             .read<AuthCubit>()
-            .signup(_authData['email']!, _authData['password']!);
+            .signup(_authData['email']!, _authData['password']!)
+            .then((value) {
+          if (context.read<AuthCubit>().registerSuccess == true) {
+            final snackBar = SnackBar(
+              backgroundColor: Colors.green,
+              content: Text("Kayıt Başarılı"),
+              duration: Duration(seconds: 2),
+            );
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            setState(() {
+              _authMode = AuthMode.login;
+            });
+          }
+        });
       }
     } on HttpException catch (e) {
       var errorMessage = 'Authentication failed';
