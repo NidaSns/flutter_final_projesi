@@ -12,4 +12,14 @@ class ApplicationConstants {
 
   late String yemekData = "";
   late String sepetData = "";
+
+  // Login
+  final String girisPasswordYz = 'Parola';
+  final String girisButonYz = 'Giriş';
+  final String girisSifreUnuttumYz = 'Şifremi Unuttum';
+  final String girisMailYz = 'Email';
+  final String loginKayitOlunYz = 'Üye değil misiniz? Kaydolmak için tıklayın';
+  final String loginKaydolYz = 'Kayıt Ol';
+  final String kullaniciAdiYz = 'Kullanıcı Adı';
+  final String loginUyari = 'Boş geçilemez';
 }
