@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yemek_siparis_app/ui/cubit/auth_cubit.dart';
+import 'package:yemek_siparis_app/ui/screens/auth_screen.dart';
 import 'package:yemek_siparis_app/ui/screens/yemek_kategori.dart';
 import 'package:yemek_siparis_app/ui/screens/yemekler_sayfasi.dart';
 import '../../constants/constants.dart';
@@ -27,9 +30,23 @@ class _AnasayfaState extends State<Anasayfa> {
     ];
     return Scaffold(
       appBar: AppBar(
-        title:
-            secilenIndex == 0 ? const Text("Yemekler") : const Text("Sepetim"),
-      ),
+          title: secilenIndex == 0
+              ? const Text("Yemekler")
+              : const Text("Sepetim"),
+          actions: [
+            IconButton(
+              onPressed: () {
+                final isAuth = BlocProvider.of<AuthCubit>(context).logout();
+                if (isAuth == false) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AuthScreen()));
+                }
+              },
+              icon: const Icon(Icons.logout),
+            ),
+          ]),
       body: sayfaListesi[secilenIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: const [
