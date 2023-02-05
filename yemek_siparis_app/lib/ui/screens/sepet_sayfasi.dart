@@ -52,14 +52,14 @@ class _SepetSayfasiState extends State<SepetSayfasi> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(
+              Card(
                 child: Column(
                   children: [
                     PreferredSize(
                       preferredSize: const Size.fromHeight(4),
                       child: Container(
                         color: Colors.red,
-                        height: 4,
+                        height: 5,
                         child: const LinearProgressIndicator(
                           color: Colors.red,
                           value: 0.7,
@@ -67,15 +67,16 @@ class _SepetSayfasiState extends State<SepetSayfasi> {
                       ),
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SizedBox(
-                          width: width / 3,
-                          height: height / 5,
+                          width: width / 4,
                           child: Image(
                             image: image,
                             fit: BoxFit.contain,
                           ),
                         ),
+                        const SizedBox(width: 20),
                         const SizedBox(
                           width: 150,
                           child: Text.rich(
@@ -103,40 +104,40 @@ class _SepetSayfasiState extends State<SepetSayfasi> {
                     return Column(
                       children: [
                         SizedBox(
-                          height: height / 1.5,
+                          height: height / 1.8,
                           child: ListView.builder(
                               key: widget.key,
                               itemCount: sepettekilerListesi.length,
                               itemBuilder: (context, index) {
                                 var sepet = sepettekilerListesi[index];
                                 String dropdownValue = sepet.sepet_siparis_adet;
-                                return Card(
-                                  child: Row(
-                                    children: [
-                                      Flexible(
-                                        flex: 1,
-                                        child: Image.network(
-                                            "http://kasimadalan.pe.hu/yemekler/resimler/${sepet.sepet_yemek_resim_adi}"),
+                                return Row(
+                                  children: [
+                                    Flexible(
+                                      flex: 1,
+                                      child: Image.network(
+                                          "http://kasimadalan.pe.hu/yemekler/resimler/${sepet.sepet_yemek_resim_adi}"),
+                                    ),
+                                    Flexible(
+                                      flex: 1,
+                                      child: Column(
+                                        children: [
+                                          ListTileBasket(sepet: sepet),
+                                          AddMinusIcons(
+                                            dropdownValue: dropdownValue,
+                                            sepet: sepet,
+                                          ),
+                                        ],
                                       ),
-                                      Flexible(
-                                        flex: 1,
-                                        child: Column(
-                                          children: [
-                                            ListTileBasket(sepet: sepet),
-                                            AddMinusIcons(
-                                              dropdownValue: dropdownValue,
-                                              sepet: sepet,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 );
                               }),
                         ),
                         TotalPricesConfirmBasket(
-                            width: width, toplamFiyat: toplamFiyat),
+                          width: width,
+                          toplamFiyat: toplamFiyat,
+                        ),
                       ],
                     );
                   } else {

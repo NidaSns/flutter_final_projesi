@@ -47,7 +47,7 @@ class _YemeklerSayfasiState extends State<YemeklerSayfasi> {
         DefaultTabController(
           length: 3,
           child: NestedScrollView(
-            floatHeaderSlivers: true,
+            floatHeaderSlivers: false,
             headerSliverBuilder:
                 (BuildContext context, bool innerBoxIsScrolled) {
               return <Widget>[
